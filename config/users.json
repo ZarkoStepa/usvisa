@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "Email": "us.visa.test123@gmail.com",
+    "Password": "Admin123."
+  },
+  "attorney": {
+    "Email": "advokat.tiac@gmail.com",
+    "Password": "Password##99"
+  },
+  "applicant": {
+    "Email": "christ.marvin@mailinator.com",
+    "Password": "Password##99"
+  }
+}
