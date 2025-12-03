@@ -8,21 +8,24 @@ test.describe('Sign-In by roles', () => {
     const signIn = new SignInPage(page);
     await signIn.goto();
     await signIn.login(users.admin.Email, users.admin.Password);
-    await signIn.assertRedirectAfterLogin();
+    await page.waitForURL(/admin-profile\/cases/);
+    await signIn.assertRedirectAfterLogout();
   });
 
   test('Attorney can login', async ({ page }) => {
     const signIn = new SignInPage(page);
     await signIn.goto();
     await signIn.login(users.attorney.Email, users.attorney.Password);
-    await signIn.assertRedirectAfterLogin();
+    await page.waitForURL(/attormney-profile\/cases/);
+    await signIn.assertRedirectAfterLogout();
   });
 
   test('Applicant can login', async ({ page }) => {
     const signIn = new SignInPage(page);
     await signIn.goto();
     await signIn.login(users.applicant.Email, users.applicant.Password);
-    await signIn.assertRedirectAfterLogin();
+    await page.waitForURL(/applicant-profile\/cases/);
+    await signIn.assertRedirectAfterLogout();
   });
 
 });

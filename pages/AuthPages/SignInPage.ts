@@ -63,8 +63,8 @@ async assertLogoIsVisible(){
   await expect(this.logoImg).toHaveAttribute('src', 'assets/images/immigration-pathways.svg');
   await expect(this.logoImg).toHaveAttribute('alt', 'Logo');
 }
-async assertRedirectAfterLogin() {
+async assertRedirectAfterLogout() {
   // Promeni regex po potrebi na pravi URL
-  await expect(this.page).toHaveURL(/attorney=profile|cases/);
+  await expect(this.page).toHaveURL(/sign-in/);
 }
 }

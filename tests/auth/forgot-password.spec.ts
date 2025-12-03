@@ -38,9 +38,7 @@ test('Submit valid email → redirect to check-email page', async ({ page }) => 
 
   await forgot.emailInput.fill('advokat.tiac@mailinator.com');
   await forgot.clickSendLink();
-
   await page.waitForURL(/check-email/);
-
   await checkEmail.assertCheckEmailUrl();
   await checkEmail.assertPageVisible();
 });

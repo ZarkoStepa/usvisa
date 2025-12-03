@@ -1,14 +1,18 @@
 import { test } from '@playwright/test';
 import { SignInPage } from '../../pages/AuthPages/SignInPage';
+import { SideMenuAdminPage } from '../../pages/AuthPages/SideMenuAdmin';
 
 test.describe('Sign-In Tests', () => {
 
   test('Valid login', async ({ page }) => {
     const signIn = new SignInPage(page);
+    const sideMenu = new SideMenuAdminPage(page);
 
     await signIn.goto();
     await signIn.login('advokat.tiac@mailinator.com', 'Password##99');
-    await signIn.assertRedirectAfterLogin();
+    await page.waitForURL(/attormney-profile\/cases/);
+    await sideMenu.clickLogout();
+    await signIn.assertRedirectAfterLogout();
   });
 
   test('Invalid login', async ({ page }) => {

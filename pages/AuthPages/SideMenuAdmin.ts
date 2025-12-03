@@ -23,6 +23,9 @@ export class SideMenuAdminPage {
   readonly orgAttorneyItem: Locator;
   readonly orgAttorneyIcon: Locator;
 
+  // LOGOUT
+  readonly logoutIcon: Locator;
+
   constructor(page: Page) {
     this.page = page;
 
@@ -45,6 +48,9 @@ export class SideMenuAdminPage {
 
     this.orgAttorneyItem = page.locator("a.menu-item span.label", { hasText: 'Org & Attorney' });
     this.orgAttorneyIcon = page.locator("a.menu-item img.icon[src*='folder-file-storage']");
+
+    //logout
+    this.logoutIcon = page.locator('img[alt="Logout"]');
   }
 
   //
@@ -70,6 +76,10 @@ export class SideMenuAdminPage {
     await this.orgAttorneyItem.click();
   }
 
+  async clickLogout() {
+    await this.logoutIcon.click();
+  }
+
   //
   // ASSERTIONS
   //
@@ -92,5 +102,10 @@ export class SideMenuAdminPage {
 
   async assertExpanded() {
     await expect(this.collapseArrow).toBeVisible();
+  }
+
+  async assertLogoutVisible() {
+    await expect(this.logoutIcon).toBeVisible();
+    await expect(this.logoutIcon).toHaveAttribute('alt', 'Logout');
   }
 }
