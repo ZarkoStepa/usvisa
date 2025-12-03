@@ -25,12 +25,12 @@ export class ForgotPasswordPage {
   }
 
   get errorMessageEmptyEmail() {
-    return this.page.locator("//span[@class='error-message']");
+    return this.page.locator("//span[@class='error-message' and text()='Email can’t be empty']");
   }
 
   get errorMessageInvalidEmailFormat() {
-    return this.page.locator("//span[@class='error-message']");
-}
+    return this.page.locator("//span[@class='error-message' and text()='Invalid email format']");
+  }
 
   get sendLinkButton() {
     return this.page.locator("//button[contains(text(),'Send link')]");
@@ -42,12 +42,14 @@ export class ForgotPasswordPage {
 
   // METHODS
   async goto() {
-    await this.page.goto('/forgot-password'); // koristi baseURL iz config-a
+    await this.page.goto('/forgot-password');
   }
 
-  async submitEmail(email: string) {
-    await this.emailInput.fill(email);
-    await this.sendLinkButton.click();
+  async clickSendLink() {
+    await this.sendLinkButton.waitFor({ state: 'visible' });
+    //await this.sendLinkButton.waitFor({ state: 'enabled' });
+    await expect(this.sendLinkButton).toBeVisible();
+    await this.sendLinkButton.click({ force: true });
   }
 
   // ASSERTIONS
@@ -66,8 +68,7 @@ export class ForgotPasswordPage {
   }
 
   async assertInvalidEmailFormatError() {
-  await expect(this.errorMessageInvalidEmailFormat).toBeVisible();
-  await expect(this.errorMessageInvalidEmailFormat).toHaveText("Invalid email format");
-}
-  
+    await expect(this.errorMessageInvalidEmailFormat).toBeVisible();
+    await expect(this.errorMessageInvalidEmailFormat).toHaveText("Invalid email format");
+  }
 }

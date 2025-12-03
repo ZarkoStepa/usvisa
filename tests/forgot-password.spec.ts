@@ -12,29 +12,25 @@ test.describe('Forgot Password Page Tests', () => {
   test('Submit empty email shows error', async ({ page }) => {
     const forgot = new ForgotPasswordPage(page);
     await forgot.goto();
-    // - prazan email
-    await forgot.submitEmail('');
+    await forgot.emailInput.fill('');
+    await forgot.clickSendLink();
     await forgot.assertEmailEmptyError();
   });
 
   test('Submit invalid email format shows error', async ({ page }) => {
-  const forgot = new ForgotPasswordPage(page);
+    const forgot = new ForgotPasswordPage(page);
+    await forgot.goto();
+    await forgot.emailInput.fill('invalid-email-format');
+    await forgot.clickSendLink();
+    await forgot.assertInvalidEmailFormatError();
+  });
 
-  await forgot.goto();
-  // email u nevalidnom formatu
-  await forgot.submitEmail('invalid-email-format');
-  await forgot.assertInvalidEmailFormatError();
-});
+  test('Submit valid email', async ({ page }) => {
+    const forgot = new ForgotPasswordPage(page);
+    await forgot.goto();
+    await forgot.emailInput.fill('advokat.tiac@mailinator.com');
+    await forgot.clickSendLink();
+    // možeš dodati asertaciju da je notifikacija/poruka poslata
+  });
 
-  test('Submit valid email', async({page}) => {
-  const forgot = new ForgotPasswordPage(page);
-
-  await forgot.submitEmail('advokat.tiac@mailinator.com');    
-})
-
-
-  // Ovde  dodati više scenarija, npr.:
-  // - valid email
-  // - invalid email format
-  // - backend error simulacija
 });
