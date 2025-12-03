@@ -24,7 +24,7 @@ export class CheckEmailPage {
     await expect(this.title).toBeVisible();
     await expect(this.description).toHaveText('We’ve sent you a recovery link.');
     await expect(this.description).toBeVisible();    
-    await expect(this.footerText).toHaveText('Didn’t get a link?');
+    await expect(this.footerText).toHaveText(' Didn’t get a link?  Resend ');
     await expect(this.footerText).toBeVisible();
     await expect(this.resendButton).toHaveText('Resend');
     await this.assertFooter();
@@ -38,7 +38,7 @@ export class CheckEmailPage {
     await expect(this.emailImage).toHaveAttribute('src', '/../../../assets/images/envelope.png');
 }
   async assertFooter() {
-    await expect(this.footerText).toContainText("Didn’t get a link?");
+    await expect(this.footerText).toContainText("Didn’t get a link?  Resend");
     await expect(this.resendButton).toHaveText("Resend");
 }
   async assertCheckEmailUrl() {
