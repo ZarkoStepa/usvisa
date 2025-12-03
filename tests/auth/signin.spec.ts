@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { SignInPage } from '../pages/SignInPage';
+import { SignInPage } from '../../pages/SignInPage';
 
 test.describe('Sign-In Tests', () => {
 

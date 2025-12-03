@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { AuthAPI } from '../api/AuthAPI';
+import { AuthAPI } from '../../api/AuthAPI';
 
 const API_URL = 'https://us-visa-gcp-api-955545365113.us-central1.run.app';
 const validUser = { Email: 'advokat.tiac@mailinator.com', Password: 'Password##99' };

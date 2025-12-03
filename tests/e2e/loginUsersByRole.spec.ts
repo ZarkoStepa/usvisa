@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import { SignInPage } from '../pages/SignInPage';
-import users from '../config/users.json'; // import JSON
+import { SignInPage } from '../../pages/SignInPage';
+import users from '../../config/users.json'; // import JSON
 
 test.describe('Sign-In by roles', () => {
 

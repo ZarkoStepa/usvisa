@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
-import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
+import { ForgotPasswordPage } from '../../pages/ForgotPasswordPage';
+import { CheckEmailPage } from '../../pages/CheckEmailPage';
 
 test.describe('Forgot Password Page Tests', () => {
 
@@ -27,15 +28,21 @@ test.describe('Forgot Password Page Tests', () => {
     await forgot.assertInvalidEmailFormatError();
   });
 
-  test('Submit valid email', async ({ page }) => {
-    const forgot = new ForgotPasswordPage(page);
-    await forgot.goto();
-    await page.screenshot({ path: 'screenshots/01-page-loaded.png' });
-    await forgot.emailInput.fill('advokat.tiac@mailinator.com');
-    await forgot.clickSendLink();
-    await page.screenshot({ path: 'screenshots/02-after-submit.png' });
-    
-    // možeš dodati asertaciju da je notifikacija/poruka poslata
-  });
+  
+
+test('Submit valid email → redirect to check-email page', async ({ page }) => {
+  const forgot = new ForgotPasswordPage(page);
+  const checkEmail = new CheckEmailPage(page);
+
+  await forgot.goto();
+
+  await forgot.emailInput.fill('advokat.tiac@mailinator.com');
+  await forgot.clickSendLink();
+
+  await page.waitForURL(/check-email/);
+
+  await checkEmail.assertCheckEmailUrl();
+  await checkEmail.assertPageVisible();
+});
 
 });
