@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import { ForgotPasswordPage } from '../../pages/ForgotPasswordPage';
-import { CheckEmailPage } from '../../pages/CheckEmailPage';
+import { ForgotPasswordPage } from '../../pages/AuthPages/ForgotPasswordPage';
+import { CheckEmailPage } from '../../pages/AuthPages/CheckEmailPage';
 
 test.describe('Forgot Password Page Tests', () => {
 
