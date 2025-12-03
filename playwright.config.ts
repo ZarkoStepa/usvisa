@@ -29,7 +29,7 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'https://us-visa.immigration-pathway.com',
     headless: false, // Pokretanje u browseru
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: 1600, height: 900 },
     actionTimeout: 10 * 1000,
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */

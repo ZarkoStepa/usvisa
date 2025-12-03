@@ -10,7 +10,7 @@ test('Admin can login', async ({ page }) => {
     const sideMenu = new SideMenuAdminPage(page);
     await signIn.goto();
     await signIn.login(users.attorney.Email, users.attorney.Password);
-    await page.waitForURL(/attormney-profile\/cases/);
+    await page.waitForURL('**/attorney-profile/cases', { timeout: 5000 });
      await sideMenu.clickLogout();
     await signIn.assertRedirectAfterLogout();
 

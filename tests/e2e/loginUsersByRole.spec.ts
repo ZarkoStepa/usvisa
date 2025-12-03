@@ -8,7 +8,7 @@ test.describe('Sign-In by roles', () => {
     const signIn = new SignInPage(page);
     await signIn.goto();
     await signIn.login(users.admin.Email, users.admin.Password);
-    await page.waitForURL(/admin-profile\/cases/);
+    await page.waitForURL('**/admin-profile/cases', { timeout: 5000 });
     await signIn.assertRedirectAfterLogout();
   });
 
@@ -16,7 +16,7 @@ test.describe('Sign-In by roles', () => {
     const signIn = new SignInPage(page);
     await signIn.goto();
     await signIn.login(users.attorney.Email, users.attorney.Password);
-    await page.waitForURL(/attormney-profile\/cases/);
+    await page.waitForURL('**/attorney-profile/cases', { timeout: 5000 });
     await signIn.assertRedirectAfterLogout();
   });
 
@@ -24,7 +24,7 @@ test.describe('Sign-In by roles', () => {
     const signIn = new SignInPage(page);
     await signIn.goto();
     await signIn.login(users.applicant.Email, users.applicant.Password);
-    await page.waitForURL(/applicant-profile\/cases/);
+    await page.waitForURL('**/applicant-profile/cases', { timeout: 5000 });
     await signIn.assertRedirectAfterLogout();
   });
 

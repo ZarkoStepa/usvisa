@@ -10,7 +10,7 @@ test.describe('Sign-In Tests', () => {
 
     await signIn.goto();
     await signIn.login('advokat.tiac@mailinator.com', 'Password##99');
-    await page.waitForURL(/attormney-profile\/cases/);
+    await page.waitForURL('**/attorney-profile/cases', { timeout: 5000 });
     await sideMenu.clickLogout();
     await signIn.assertRedirectAfterLogout();
   });

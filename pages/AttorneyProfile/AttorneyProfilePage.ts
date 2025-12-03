@@ -15,7 +15,7 @@ export class AttorneyProfilePageCases {
 
   async assertAttorneyProfileCasesUrl() {
   // Promeni regex po potrebi na pravi URL
-  await expect(this.page).toHaveURL(/attorney=profile|cases/);
+  await expect(this.page).toHaveURL('**/attorney-profile/cases', { timeout: 10000 });
 }
 
 
