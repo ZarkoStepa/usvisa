@@ -26,23 +26,3 @@ test.describe('Sign-In by roles', () => {
   });
 
 });
-
-/*
-type User = { Email: string; Password: string };
-
-const roles: [string, User][] = [
-  ['Admin', users.admin],
-  ['Attorney', users.attorney],
-  ['Applicant', users.applicant]
-];
-
-test.describe('Sign-In by roles', () => {
-  for (const [role, user] of roles) {
-    test(`${role} can login`, async ({ page }) => {
-      const signIn = new SignInPage(page);
-      await signIn.goto();
-      await signIn.login(user.Email, user.Password);
-      await signIn.assertRedirectAfterLogin();
-    });
-  }
-});*/
