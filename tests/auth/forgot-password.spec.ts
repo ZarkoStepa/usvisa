@@ -12,8 +12,10 @@ test.describe('Forgot Password Page Tests', () => {
   test('Submit empty email shows error', async ({ page }) => {
     const forgot = new ForgotPasswordPage(page);
     await forgot.goto();
+    await page.screenshot({ path: 'screenshots/01-page-loaded.png' });
     await forgot.emailInput.fill('');
     await forgot.clickSendLink();
+    await page.screenshot({ path: 'screenshots/02-after-submit.png' });
     await forgot.assertEmailEmptyError();
   });
 
@@ -28,8 +30,11 @@ test.describe('Forgot Password Page Tests', () => {
   test('Submit valid email', async ({ page }) => {
     const forgot = new ForgotPasswordPage(page);
     await forgot.goto();
+    await page.screenshot({ path: 'screenshots/01-page-loaded.png' });
     await forgot.emailInput.fill('advokat.tiac@mailinator.com');
     await forgot.clickSendLink();
+    await page.screenshot({ path: 'screenshots/02-after-submit.png' });
+    
     // možeš dodati asertaciju da je notifikacija/poruka poslata
   });
 
